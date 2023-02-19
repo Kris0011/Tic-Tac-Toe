@@ -367,6 +367,7 @@ int main() {
                                 if(board[6]==' ')
                                 {
                                     board[6]='O';
+				    rem(7);
         
                                 }
                             }
