@@ -1,0 +1,65 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .game {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .row {
+    display: flex;
+    width: 300px;
+  }
+  
+  .cell {
+    flex-basis: 33.33%;
+    height: 6rem;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    cursor: pointer;
+  }
+  
+  .cell:hover {
+    background-color: lightgray;
+  }
+  
+  .cell.x {
+    color: blue;
+  }
+  
+  .cell.o {
+    color: red;
+  }
+  
+  .message {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .reset {
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid black;
+    cursor: pointer;
+  }
+  
+  .reset:hover {
+    background-color: lightgray;
+  }
+  
