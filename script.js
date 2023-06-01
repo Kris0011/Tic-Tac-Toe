@@ -378,7 +378,7 @@ function move(index) {
 
       i = i + 1;
     }
-  }, 500);
+  }, 200);
   console.log(board);
 
 }
