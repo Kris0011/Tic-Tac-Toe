@@ -4,16 +4,16 @@ let currentPlayer = "X";
 let board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
 let winner = null;
 
-var i = 0;
-var flag = 0;
+
 var k = 0;
 let mark = [];
+var s , w;
+var i = 0;
+var flag = 0;
 
-function assign() {
   for (let i = 0; i < 10; i++) {
     mark.push(i);
   }
-}
 
 function rem(number) {
   let index = mark.indexOf(number);
@@ -233,7 +233,6 @@ function issafe() {
   return 0;
 }
 
-
 function move(index) {
   if (gameActive && board[index] === ' ') {
     board[index] = currentPlayer;
@@ -243,7 +242,10 @@ function move(index) {
     } else {
       currentPlayer = 'X';
     }
+    rem(index+1);
+
   }
+  
 
   if (i == 4) {
     k = 1;
@@ -261,11 +263,14 @@ function move(index) {
       rem(1);
       document.getElementById(`cell0`).innerHTML = 'O';
 
+    
     }
+
   }
   else {
     if (i == 1) {
       s = issafe();
+      console.log(s);
       if (s) {
         board[s - 1] = 'O';
         rem(s);
@@ -295,7 +300,7 @@ function move(index) {
 
             }
           }
-          elseif(board[1] == 'X' || board[3] == 'X')
+          else if(board[1] == 'X' || board[3] == 'X')
           {
             if (board[0] == ' ') {
               board[0] = 'O';
@@ -304,7 +309,7 @@ function move(index) {
 
             }
           }
-          elseif(board[1] == 'X' || board[5] == 'X')
+          else if(board[1] == 'X' || board[5] == 'X')
           {
             if (board[2] == ' ') {
               board[2] = 'O';
@@ -313,7 +318,7 @@ function move(index) {
 
             }
           }
-          elseif(board[3] == 'X' || board[7] == 'X')
+          else if(board[3] == 'X' || board[7] == 'X')
           {
             if (board[6] == ' ') {
               board[6] = 'O';
@@ -356,7 +361,8 @@ function move(index) {
     }
   }
 
-  i++;
+  i= i+1 ;
+  console.log(board);
 
 }
 

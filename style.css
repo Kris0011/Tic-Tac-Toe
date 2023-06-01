@@ -14,9 +14,6 @@
   .game {
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
-    padding: 0.5rem;
-    margin-bottom: 1.5rem;
   }
   
   .row {
@@ -27,12 +24,13 @@
   .cell {
     flex-basis: 33.33%;
     height: 6rem;
-    border: 1px solid black;
+    border: 2px solid red;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 3rem;
     cursor: pointer;
+    margin: 2px;
   }
   
   .cell:hover {
