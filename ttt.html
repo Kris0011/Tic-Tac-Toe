@@ -23,10 +23,13 @@
           <button class="cell" id="cell7" onclick="move(7)"></button>
           <button class="cell" id="cell8" onclick="move(8)"></button>
         </div>
+        <audio id="myAudio">
+          <source src="beep2.mp3" type="audio/mpeg">
+        </audio>
       </div>
       <div class="message"></div>
       <p id="declare"></p>
-      <button class="reset">Reset Game</button>
+      <button class="reset" onclick="resetGame()">Reset Game</button>
     </div>
     <script src="script.js"></script>
   </body>
