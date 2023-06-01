@@ -5,15 +5,15 @@ let board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
 let winner = null;
 
 
-var k = 0;
+let k = 0;
 let mark = [];
-var s , w;
-var i = 0;
-var flag = 0;
+let s, w;
+let i = 0;
+let flag = 0;
 
-  for (let i = 0; i < 10; i++) {
-    mark.push(i);
-  }
+for (let i = 0; i < 10; i++) {
+  mark.push(i);
+}
 
 function rem(number) {
   let index = mark.indexOf(number);
@@ -242,126 +242,126 @@ function move(index) {
     } else {
       currentPlayer = 'X';
     }
-    rem(index+1);
+    rem(index + 1);
 
   }
-  
 
-  if (i == 4) {
-    k = 1;
-  }
-  if (i == 0) {
-    console.log('Yes');
-    if (board[4] == ' ') {
-      board[4] = 'O';
-      rem(5);
-      document.getElementById(`cell4`).innerHTML = 'O';
+  if (gameActive) {
+    if (i == 4) {
+      k = 1;
     }
-    else {
-      flag = 1;
-      board[0] = 'O';
-      rem(1);
-      document.getElementById(`cell0`).innerHTML = 'O';
-
-    
-    }
-
-  }
-  else {
-    if (i == 1) {
-      s = issafe();
-      console.log(s);
-      if (s) {
-        board[s - 1] = 'O';
-        rem(s);
-        document.getElementById(`cell${s - 1}`).innerHTML = 'O';
-
+    if (i == 0) {
+      if (board[4] == ' ') {
+        board[4] = 'O';
+        rem(5);
+        document.getElementById(`cell4`).innerHTML = 'O';
       }
       else {
-        if ((board[0] == 'X' || board[2] == 'X' || board[6] == 'X' || board[8] == 'X') && flag == 0) {
-          board[7] = 'O';
-          rem(8);
-          document.getElementById(`cell7`).innerHTML = 'O';
+        flag = 1;
+        board[0] = 'O';
+        rem(1);
+        document.getElementById(`cell0`).innerHTML = 'O';
 
-        }
-        else if (flag == 1) {
 
-          board[6] = 'O';
-          rem(7);
-          document.getElementById(`cell6`).innerHTML = 'O';
-
-        }
-        else {
-          if (board[5] == 'X' || board[7] == 'X') {
-            if (board[8] == ' ') {
-              board[8] = 'O';
-              rem(9);
-              document.getElementById(`cell8`).innerHTML = 'O';
-
-            }
-          }
-          else if(board[1] == 'X' || board[3] == 'X')
-          {
-            if (board[0] == ' ') {
-              board[0] = 'O';
-              rem(1);
-              document.getElementById(`cell0`).innerHTML = 'O';
-
-            }
-          }
-          else if(board[1] == 'X' || board[5] == 'X')
-          {
-            if (board[2] == ' ') {
-              board[2] = 'O';
-              rem(3);
-              document.getElementById(`cell2`).innerHTML = 'O';
-
-            }
-          }
-          else if(board[3] == 'X' || board[7] == 'X')
-          {
-            if (board[6] == ' ') {
-              board[6] = 'O';
-              rem(7);
-              document.getElementById(`cell6`).innerHTML = 'O';
-            }
-            else {
-              board[mark[1] - 1] = 'O';
-              rem(mark[1]);
-            }
-          }
-        }
       }
+
     }
     else {
-      s = issafe();
-      w = iswin();
-      if (w) {
-        board[w - 1] = 'O';
-        rem(w);
-        document.getElementById(`cell${w - 1}`).innerHTML = 'O';
-        k = 3;
-        winner = 'Y';
-      }
-      else {
+      if (i == 1) {
+        s = issafe();
+        console.log(s);
         if (s) {
-
           board[s - 1] = 'O';
           rem(s);
           document.getElementById(`cell${s - 1}`).innerHTML = 'O';
 
+        }
+        else {
+          if ((board[0] == 'X' || board[2] == 'X' || board[6] == 'X' || board[8] == 'X') && flag == 0) {
+            board[7] = 'O';
+            rem(8);
+            document.getElementById(`cell7`).innerHTML = 'O';
+
+          }
+          else if (flag == 1) {
+
+            board[6] = 'O';
+            rem(7);
+            document.getElementById(`cell6`).innerHTML = 'O';
+
+          }
+          else {
+            if (board[5] == 'X' || board[7] == 'X') {
+              if (board[8] == ' ') {
+                board[8] = 'O';
+                rem(9);
+                document.getElementById(`cell8`).innerHTML = 'O';
+
+              }
+            }
+            else if (board[1] == 'X' || board[3] == 'X') {
+              if (board[0] == ' ') {
+                board[0] = 'O';
+                rem(1);
+                document.getElementById(`cell0`).innerHTML = 'O';
+
+              }
+            }
+            else if (board[1] == 'X' || board[5] == 'X') {
+              if (board[2] == ' ') {
+                board[2] = 'O';
+                rem(3);
+                document.getElementById(`cell2`).innerHTML = 'O';
+
+              }
+            }
+            else if (board[3] == 'X' || board[7] == 'X') {
+              if (board[6] == ' ') {
+                board[6] = 'O';
+                rem(7);
+                document.getElementById(`cell6`).innerHTML = 'O';
+              }
+              else {
+                board[mark[1] - 1] = 'O';
+                rem(mark[1]);
+              }
+            }
+          }
+        }
+      }
+      else {
+        s = issafe();
+        w = iswin();
+        if (w) {
+          board[w - 1] = 'O';
+          rem(w);
+          document.getElementById(`cell${w - 1}`).innerHTML = 'O';
+          k = 3;
+          winner = 'Y';
+          document.getElementById(`declare`).innerHTML = 'Sorry You Lost';
+          gameActive = false;
 
         }
         else {
-          board[mark[1] - 1] = 'O';
-          rem(mark[1]);
-          document.getElementById(`cell${mark[1] - 1}`).innerHTML = 'O';
+          if (s) {
+
+            board[s - 1] = 'O';
+            rem(s);
+            document.getElementById(`cell${s - 1}`).innerHTML = 'O';
+
+
+          }
+          else {
+            board[mark[1] - 1] = 'O';
+            rem(mark[1]);
+            document.getElementById(`cell${mark[1] - 1}`).innerHTML = 'O';
+          }
         }
       }
     }
-  }
 
-  i= i+1 ;
+    i = i + 1;
+  }
   console.log(board);
 
 }
